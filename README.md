@@ -4,6 +4,8 @@
 
 Простое React-приложение для визуализации roadmap изучения технологий.
 
+[Демо](https://nekotyan2d.github.io/roadmap-react/)
+
 ## Требования
 
 -   Node.JS v24
