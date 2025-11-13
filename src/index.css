@@ -1,0 +1,31 @@
+html {
+    font-family: sans-serif;
+}
+body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+button {
+    background-color: rgb(62, 43, 131);
+    color: white;
+    border: none;
+    border-radius: 32px;
+    padding: 0 16px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+}

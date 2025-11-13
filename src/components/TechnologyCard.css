@@ -1,0 +1,88 @@
+.technology-card {
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card__header {
+    display: flex;
+    align-items: center;
+}
+
+.card__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: #000;
+    height: 32px;
+    width: 32px;
+    padding: 0;
+}
+.card__title {
+    flex: 1;
+}
+
+.card__state {
+    border-radius: 24px;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+}
+.card__state--not-started {
+    background-color: #404040;
+    color: white;
+}
+.card__state--in-progress {
+    background-color: #efb01d;
+    color: #765300;
+}
+.card__state--completed {
+    background-color: #aeffa2;
+    color: #0c5900;
+}
+
+.card__links {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card__link {
+    display: flex;
+    align-items: center;
+}
+
+.link__label {
+    font-weight: bold;
+    margin-right: 4px;
+    border-radius: 24px;
+    padding: 4px;
+}
+
+.link__label--article {
+    background-color: #c8e5ff;
+    color: #003366;
+}
+
+.link__label--video {
+    background-color: #ffc0d9;
+    color: #660033;
+}
+
+.link__label--opensource {
+    background-color: #c0ffc4;
+    color: #00660f;
+}
+
+.link__url {
+    color: rgb(99, 68, 208);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
