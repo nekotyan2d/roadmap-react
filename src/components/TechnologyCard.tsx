@@ -1,12 +1,20 @@
-import { useAppStore } from "../stores/app";
+import { useAppStore } from "../stores/app.js";
 import "./TechnologyCard.css";
 
-function TechnologyCard({ title, description, links, id, state }) {
+interface TechnologyCardProps {
+    title: string;
+    description: string;
+    links: { type: string; title: string; url: string }[];
+    id: number;
+    state: RoadmapState;
+}
+
+function TechnologyCard({ title, description, links, id, state }: TechnologyCardProps) {
     const setRoadmapStateByIndex = useAppStore((state) => state.setRoadmapStateByIndex);
     const setRoadmapItemId = useAppStore((state) => state.setRoadmapItemId);
 
-    function onChangeState(e) {
-        setRoadmapStateByIndex(id, e.target.value);
+    function onChangeState(e: React.ChangeEvent<HTMLSelectElement>) {
+        setRoadmapStateByIndex(id, e.target.value as RoadmapState);
     }
 
     function onCloseClick() {

@@ -1,6 +1,13 @@
-import { useAppStore } from "../stores/app";
+import { useAppStore } from "../stores/app.js";
 import "./TechnologyTreeItem.css";
-function TechnologyTreeItem({ title, state, id }) {
+
+interface TechnologyTreeItemProps {
+    title: string;
+    state: "not-started" | "in-progress" | "completed";
+    id: number;
+}
+
+function TechnologyTreeItem({ title, state, id }: TechnologyTreeItemProps) {
     const setRoadmapItemId = useAppStore((state) => state.setRoadmapItemId);
     const getCurrentRoadmapItem = useAppStore((state) => state.getCurrentRoadmapItem);
 

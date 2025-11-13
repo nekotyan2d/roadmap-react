@@ -1,12 +1,9 @@
-import React from "react";
 import "./App.css";
-import FileImport from "./components/FileImport";
-import { useAppStore } from "./stores/app";
-import TechnologyCard from "./components/TechnologyCard";
-import FileExport from "./components/FileExport";
-import TechnologyTreeItem from "./components/TechnologyTreeItem";
-
-export const Context = React.createContext();
+import FileImport from "./components/FileImport.js";
+import { useAppStore } from "./stores/app.js";
+import TechnologyCard from "./components/TechnologyCard.js";
+import FileExport from "./components/FileExport.js";
+import TechnologyTreeItem from "./components/TechnologyTreeItem.js";
 
 function App() {
     const roadmap = useAppStore((state) => state.roadmap);
@@ -16,6 +13,8 @@ function App() {
     function View() {
         if (roadmapItemId !== null) {
             const item = getCurrentRoadmapItem();
+            if (!item) return null;
+
             return (
                 <TechnologyCard
                     title={item.title}

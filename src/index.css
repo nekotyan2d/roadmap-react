@@ -1,5 +1,6 @@
 html {
     font-family: sans-serif;
+    scrollbar-gutter: stable;
 }
 body {
     margin: 0;
