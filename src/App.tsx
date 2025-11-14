@@ -5,37 +5,42 @@ import TechnologyCard from "./components/TechnologyCard.js";
 import FileExport from "./components/FileExport.js";
 import TechnologyTreeItem from "./components/TechnologyTreeItem.js";
 import Statistics from "./components/Statistics.js";
+import Modal from "./components/Modal.js";
+import React from "react";
 
 function App() {
     const roadmap = useAppStore((state) => state.roadmap);
     const roadmapItemId = useAppStore((state) => state.roadmapItemId);
     const getCurrentRoadmapItem = useAppStore((state) => state.getCurrentRoadmapItem);
+    const setCurrentRoadmapItemId = useAppStore((state) => state.setRoadmapItemId);
 
     function View() {
-        if (roadmapItemId !== null) {
-            const item = getCurrentRoadmapItem();
-            if (!item) return null;
-
-            return (
-                <TechnologyCard
-                    title={item.title}
-                    description={item.description}
-                    links={item.links}
-                    id={roadmapItemId}
-                    state={item.state}
-                />
-            );
-        }
         return (
             <div className="tech-tree">
                 {roadmap.map((item, index) => (
-                    <TechnologyTreeItem
-                        title={item.title}
-                        state={item.state}
-                        id={index}
-                        key={`tech-tree-item-${index}`}
-                    />
-                ))}{" "}
+                    <React.Fragment key={`tech-tree-item-${index}`}>
+                        <TechnologyTreeItem
+                            title={item.title}
+                            state={item.state}
+                            id={index}
+                            key={`tech-tree-branch-${index}`}
+                        />
+                        <Modal
+                            show={roadmapItemId === index}
+                            title={item.title}
+                            key={`modal-tech-card-${index}`}
+                            onClose={() => setCurrentRoadmapItemId(null)}>
+                            <TechnologyCard
+                                title={item.title}
+                                description={item.description}
+                                state={item.state}
+                                links={item.links}
+                                id={index}
+                                key={`tech-card-${index}`}
+                            />
+                        </Modal>
+                    </React.Fragment>
+                ))}
             </div>
         );
     }

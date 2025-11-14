@@ -4,25 +4,6 @@
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
 }
 
-.card__header {
-    display: flex;
-    align-items: center;
-}
-
-.card__close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    color: #000;
-    height: 32px;
-    width: 32px;
-    padding: 0;
-}
-.card__title {
-    flex: 1;
-}
-
 .card__state {
     border-radius: 24px;
     padding: 8px;
