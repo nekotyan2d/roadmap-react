@@ -4,6 +4,7 @@ import { useAppStore } from "./stores/app.js";
 import TechnologyCard from "./components/TechnologyCard.js";
 import FileExport from "./components/FileExport.js";
 import TechnologyTreeItem from "./components/TechnologyTreeItem.js";
+import Statistics from "./components/Statistics.js";
 
 function App() {
     const roadmap = useAppStore((state) => state.roadmap);
@@ -47,7 +48,7 @@ function App() {
                     <FileImport />
                     <FileExport />
                 </div>
-
+                <Statistics />
                 {View()}
             </main>
         </>
