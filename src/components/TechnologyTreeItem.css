@@ -9,6 +9,7 @@
         position: absolute;
         bottom: -16px;
         left: 50%;
+        transform: translateX(-50%);
         /* right: 0; */
         display: block;
         height: 16px;
