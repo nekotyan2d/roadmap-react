@@ -1,4 +1,4 @@
-import { useAppStore } from "../stores/app.js";
+import { useAppStore } from "../../stores/app.js";
 
 function FileExport() {
     const roadmap = useAppStore((state) => state.roadmap);

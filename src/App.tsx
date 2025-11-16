@@ -1,11 +1,11 @@
 import "./App.css";
-import FileImport from "./components/FileImport.js";
+import FileImport from "./features/file/FileImport.js";
 import { useAppStore } from "./stores/app.js";
-import TechnologyCard from "./components/TechnologyCard.js";
-import FileExport from "./components/FileExport.js";
-import TechnologyTreeItem from "./components/TechnologyTreeItem.js";
-import Statistics from "./components/Statistics.js";
-import Modal from "./components/Modal.js";
+import TechnologyCard from "./features/technology/TechnologyCard.js";
+import FileExport from "./features/file/FileExport.js";
+import TechnologyTreeItem from "./features/technology/TechnologyTreeItem.js";
+import Statistics from "./features/statistics/Statistics.js";
+import Modal from "./features/modal/Modal.js";
 import React from "react";
 
 function App() {

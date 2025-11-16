@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAppStore } from "../stores/app.js";
+import { useAppStore } from "../../stores/app.js";
 import "./TechnologyCard.css";
 
 interface TechnologyCardProps {

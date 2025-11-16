@@ -1,5 +1,5 @@
 import type React from "react";
-import { useAppStore } from "../stores/app.js";
+import { useAppStore } from "../../stores/app.js";
 
 function FileImport() {
     const setRoadmap = useAppStore((state) => state.setRoadmap);
