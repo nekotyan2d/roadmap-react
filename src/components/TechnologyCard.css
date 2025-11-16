@@ -66,3 +66,13 @@
         text-decoration: underline;
     }
 }
+
+.notes__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.notes__textarea {
+    min-height: 8rem;
+}

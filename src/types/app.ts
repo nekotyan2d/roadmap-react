@@ -11,5 +11,6 @@ declare global {
         description: string;
         links: RoadmapLink[];
         state: RoadmapState;
+        note: string;
     }
 }

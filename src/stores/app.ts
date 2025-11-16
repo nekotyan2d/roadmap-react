@@ -4,6 +4,7 @@ interface AppState {
     roadmap: RoadmapItem[];
     setRoadmap: (data: RoadmapItem[]) => void;
     setRoadmapStateByIndex: (index: number, newState: RoadmapState) => void;
+    setRoadmapNoteByIndex: (index: number, note: string) => void;
     roadmapItemId: number | null;
     getCurrentRoadmapItem: () => RoadmapItem | undefined;
     setRoadmapItemId: (id: number | null) => void;
@@ -15,6 +16,11 @@ export const useAppStore = create<AppState>((set, get) => ({
     setRoadmapStateByIndex: (index, newState) =>
         set((state) => {
             const updatedRoadmap = state.roadmap.map((item, i) => (i === index ? { ...item, state: newState } : item));
+            return { roadmap: updatedRoadmap };
+        }),
+    setRoadmapNoteByIndex: (index, note) =>
+        set((state) => {
+            const updatedRoadmap = state.roadmap.map((item, i) => (i === index ? { ...item, note } : item));
             return { roadmap: updatedRoadmap };
         }),
     roadmapItemId: null,

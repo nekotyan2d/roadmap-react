@@ -35,6 +35,7 @@ function App() {
                                 description={item.description}
                                 state={item.state}
                                 links={item.links}
+                                note={item.note}
                                 id={index}
                                 key={`tech-card-${index}`}
                             />
