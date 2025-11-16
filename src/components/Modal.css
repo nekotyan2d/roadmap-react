@@ -17,6 +17,9 @@
         border-radius: 16px;
         max-width: 600px;
         animation: modal-content 0.3s ease-out;
+        overflow-y: auto;
+        max-height: 100vh;
+        max-height: 100dvh;
 
         .modal-content__header {
             display: flex;
