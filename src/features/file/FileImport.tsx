@@ -24,9 +24,10 @@ function FileImport() {
             const content = evt.target.result;
             if (typeof content !== "string") return;
 
-            const roadmapArray = Object.values(JSON.parse(content) as RoadmapItem[]).map((item) => ({
+            const roadmapArray = Object.values(JSON.parse(content) as RoadmapItem[]).map((item, index) => ({
                 ...item,
                 state: item.state !== undefined ? item.state : "not-started",
+                id: item.id !== undefined ? item.id : index,
             }));
             setRoadmap(roadmapArray);
         };

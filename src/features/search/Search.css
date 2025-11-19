@@ -1,0 +1,13 @@
+.search {
+    display: flex;
+
+    .search-input {
+        width: 100%;
+        padding: 8px;
+        background-color: hsl(253, 100%, 95%);
+        border-color: hsl(253, 100%, 60%);
+        &::placeholder {
+            color: hsl(253, 60%, 60%);
+        }
+    }
+}

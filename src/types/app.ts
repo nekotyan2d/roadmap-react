@@ -7,6 +7,7 @@ declare global {
     }
 
     interface RoadmapItem {
+        id: number;
         title: string;
         description: string;
         links: RoadmapLink[];

@@ -37,7 +37,8 @@ button {
     }
 }
 
-textarea {
+textarea,
+input {
     height: 50px;
     flex: 1;
     border-radius: 24px;
