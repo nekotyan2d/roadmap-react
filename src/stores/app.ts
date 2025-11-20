@@ -14,7 +14,7 @@ interface AppState {
     setFilteredRoadmap: (data: RoadmapItem[]) => void;
     isFiltered: boolean;
     disableFiltering: () => void;
-    searchByTitle: (text: string) => void;
+    search: (text: string) => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -52,7 +52,7 @@ export const useAppStore = create<AppState>()(
                     return { isFiltered: false };
                 }),
             isFiltered: false,
-            searchByTitle: (text: string) =>
+            search: (text: string) =>
                 set((state) => {
                     const normalizedText = text.trim().toLowerCase();
                     if (normalizedText.length == 0) {
@@ -60,8 +60,10 @@ export const useAppStore = create<AppState>()(
                     }
                     return {
                         isFiltered: true,
-                        filteredRoadmap: state.roadmap.filter((item) =>
-                            item.title.toLowerCase().includes(normalizedText)
+                        filteredRoadmap: state.roadmap.filter(
+                            (item) =>
+                                item.title.toLowerCase().includes(normalizedText) ||
+                                item.description.toLowerCase().includes(normalizedText)
                         ),
                     };
                 }),

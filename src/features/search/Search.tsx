@@ -4,7 +4,7 @@ import { useAppStore } from "../../stores/app.js";
 function Search() {
     const roadmap = useAppStore((state) => state.roadmap);
 
-    const searchByTitle = useAppStore((state) => state.searchByTitle);
+    const searchByTitle = useAppStore((state) => state.search);
 
     function onChange(e: ChangeEvent<HTMLInputElement>) {
         const text = e.target.value;
