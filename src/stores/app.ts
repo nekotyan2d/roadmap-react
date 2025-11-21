@@ -15,6 +15,10 @@ interface AppState {
     isFiltered: boolean;
     disableFiltering: () => void;
     search: (text: string) => void;
+    filterByState: (state: RoadmapState | "all") => void;
+
+    markAllAsCompleted: () => void;
+    markAllAsNotStarted: () => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -67,6 +71,38 @@ export const useAppStore = create<AppState>()(
                         ),
                     };
                 }),
+            filterByState: (_state) => {
+                set((state) => {
+                    if (_state === "all") {
+                        return {
+                            isFiltered: false,
+                            filteredRoadmap: [],
+                        };
+                    }
+                    return {
+                        isFiltered: true,
+                        filteredRoadmap: state.roadmap.filter((item) => item.state === _state),
+                    };
+                });
+            },
+            markAllAsCompleted: () => {
+                set((state: AppState) => {
+                    const updatedRoadmap = state.roadmap.map((item: RoadmapItem) => ({
+                        ...item,
+                        state: "completed" as RoadmapState,
+                    }));
+                    return { roadmap: updatedRoadmap };
+                });
+            },
+            markAllAsNotStarted: () => {
+                set((state: AppState) => {
+                    const updatedRoadmap = state.roadmap.map((item: RoadmapItem) => ({
+                        ...item,
+                        state: "not-started" as RoadmapState,
+                    }));
+                    return { roadmap: updatedRoadmap };
+                });
+            },
         }),
         {
             name: "app-store",

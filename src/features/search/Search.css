@@ -1,5 +1,6 @@
 .search {
     display: flex;
+    flex: 1;
 
     .search-input {
         width: 100%;

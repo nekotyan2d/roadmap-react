@@ -8,6 +8,8 @@ import Statistics from "./features/statistics/Statistics.js";
 import Modal from "./features/modal/Modal.js";
 import React from "react";
 import Search from "./features/search/Search.js";
+import Filter from "./features/filter/Filter.js";
+import QuickActions from "./features/quick-actions/QuickActions.js";
 
 function App() {
     const originalRoadmap = useAppStore((state) => state.roadmap);
@@ -63,7 +65,11 @@ function App() {
                     <FileImport />
                     <FileExport />
                 </div>
-                <Search />
+                <div className="filterbar">
+                    <Search />
+                    <Filter />
+                    <QuickActions />
+                </div>
                 <Statistics />
                 {View()}
             </main>
