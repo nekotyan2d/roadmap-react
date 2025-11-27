@@ -5,14 +5,11 @@ interface TechnologyTreeItemProps {
     title: string;
     state: RoadmapState;
     id: number;
+    onClick: () => void;
 }
 
-function TechnologyTreeItem({ title, state, id }: TechnologyTreeItemProps) {
+function TechnologyTreeItem({ title, state, id, onClick }: TechnologyTreeItemProps) {
     const setRoadmapItemId = useAppStore((state) => state.setRoadmapItemId);
-
-    function onClick() {
-        setRoadmapItemId(id);
-    }
 
     return (
         <>
