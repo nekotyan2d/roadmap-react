@@ -14,23 +14,23 @@
         display: block;
         height: 16px;
         width: 4px;
-        background-color: var(--color-branch, rgb(62, 43, 131));
+        background-color: var(--color-branch, var(--color-tech-not-started-light));
     }
 }
 
 .tech-tree-item--not-started {
-    background-color: hsl(253, 100%, 85%);
-    color: hsl(253, 100%, 60%);
+    background-color: var(--color-tech-not-started-dark);
+    color: var(--color-tech-not-started-light);
 }
 
 .tech-tree-item--in-progress {
-    background-color: hsl(42, 87%, 53%);
-    color: hsl(42, 87%, 25%);
-    --color-branch: hsl(42, 87%, 25%);
+    background-color: var(--color-tech-in-progress-dark);
+    color: var(--color-tech-in-progress-light);
+    --color-branch: var(--color-tech-in-progress-light);
 }
 
 .tech-tree-item--completed {
-    background-color: hsl(112, 100%, 82%);
-    color: hsl(112, 100%, 30%);
-    --color-branch: hsl(112, 100%, 30%);
+    background-color: var(--color-tech-completed-dark);
+    color: var(--color-tech-completed-light);
+    --color-branch: var(--color-tech-completed-light);
 }

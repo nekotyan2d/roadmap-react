@@ -1,0 +1,59 @@
+html.theme-light {
+    --color-bg: hsl(0, 0%, 98%);
+    --color-bg-light: hsl(0, 0%, 98%);
+    --color-text: hsl(0, 0%, 10%);
+    --color-border: hsl(0, 0%, 80%);
+    --color-primary: hsl(253, 100%, 60%);
+
+    --color-btn-bg: hsl(253, 100%, 60%);
+    --color-btn-text: hsl(0, 0%, 100%);
+
+    --color-violet-light: hsl(253, 100%, 95%);
+    --color-violet-dark: hsl(253, 100%, 60%);
+    --color-green-light: hsl(112, 100%, 95%);
+    --color-green-dark: hsl(112, 100%, 25%);
+    --color-grey-light: hsl(0, 0%, 95%);
+    --color-grey-dark: hsl(0, 0%, 25%);
+    --color-orange-light: hsl(42, 87%, 95%);
+    --color-orange-dark: hsl(42, 87%, 25%);
+
+    --color-statistics-dark: hsl(253, 100%, 60%);
+    --color-statistics-light: hsl(253, 100%, 95%);
+
+    --color-tech-not-started-dark: hsl(253, 100%, 85%);
+    --color-tech-not-started-light: hsl(253, 100%, 60%);
+    --color-tech-in-progress-dark: hsl(42, 87%, 53%);
+    --color-tech-in-progress-light: hsl(42, 87%, 25%);
+    --color-tech-completed-dark: hsl(112, 100%, 82%);
+    --color-tech-completed-light: hsl(112, 100%, 20%);
+}
+
+html.theme-dark {
+    --color-bg: hsl(0, 0%, 10%);
+    --color-bg-light: hsl(0, 0%, 14%);
+    --color-text: hsl(0, 0%, 90%);
+    --color-border: hsl(0, 0%, 30%);
+    --color-primary: hsl(253, 100%, 70%);
+
+    --color-btn-bg: hsl(253, 100%, 80%);
+    --color-btn-text: hsl(253, 100%, 35%);
+
+    --color-violet-light: hsl(253, 50%, 10%);
+    --color-violet-dark: hsl(253, 100%, 70%);
+    --color-green-light: hsl(112, 50%, 10%);
+    --color-green-dark: hsl(112, 100%, 35%);
+    --color-grey-light: hsl(0, 0%, 15%);
+    --color-grey-dark: hsl(0, 0%, 55%);
+    --color-orange-light: hsl(42, 50%, 10%);
+    --color-orange-dark: hsl(42, 87%, 40%);
+
+    --color-statistics-dark: hsl(253, 100%, 60%);
+    --color-statistics-light: hsl(253, 100%, 95%);
+
+    --color-tech-not-started-dark: hsl(253, 100%, 10%);
+    --color-tech-not-started-light: hsl(253, 100%, 70%);
+    --color-tech-in-progress-dark: hsl(42, 87%, 20%);
+    --color-tech-in-progress-light: hsl(42, 87%, 53%);
+    --color-tech-completed-dark: hsl(112, 100%, 12%);
+    --color-tech-completed-light: hsl(112, 100%, 37%);
+}

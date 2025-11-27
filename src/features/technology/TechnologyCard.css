@@ -11,16 +11,16 @@
     border: none;
 }
 .card__state--not-started {
-    background-color: #404040;
-    color: white;
+    background-color: var(--color-tech-not-started-dark);
+    color: var(--color-tech-not-started-light);
 }
 .card__state--in-progress {
-    background-color: #efb01d;
-    color: #765300;
+    background-color: var(--color-tech-in-progress-dark);
+    color: var(--color-tech-in-progress-light);
 }
 .card__state--completed {
-    background-color: #aeffa2;
-    color: #0c5900;
+    background-color: var(--color-tech-completed-dark);
+    color: var(--color-tech-completed-light);
 }
 
 .card__links {
@@ -59,7 +59,7 @@
 }
 
 .link__url {
-    color: rgb(99, 68, 208);
+    color: var(--color-primary);
     text-decoration: none;
 
     &:hover {

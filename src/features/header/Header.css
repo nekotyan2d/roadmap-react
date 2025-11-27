@@ -1,0 +1,23 @@
+header {
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+
+    h1 {
+        flex: 1;
+    }
+
+    .back {
+        margin-right: 16px;
+    }
+
+    .back,
+    .settings {
+        display: flex;
+        align-items: center;
+        color: var(--color-primary);
+    }
+}
