@@ -17,6 +17,7 @@ function QuickActions() {
     return (
         <div className="quick-actions-container">
             <button
+                title="Быстрые действия"
                 className="quick-actions-button"
                 onClick={() => setPopupVisible(!isPopupVisible)}>
                 <svg

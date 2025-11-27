@@ -17,6 +17,7 @@ function Filter() {
     return (
         <div className="filter-container">
             <button
+                title="Фильтр"
                 className="filter-button"
                 onClick={() => setPopupVisible(!isPopupVisible)}>
                 <svg

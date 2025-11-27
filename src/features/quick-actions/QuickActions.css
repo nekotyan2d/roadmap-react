@@ -1,3 +1,16 @@
 .quick-actions-container {
     position: relative;
+
+    .quick-actions-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        background-color: transparent;
+        border: 1px solid hsl(253, 100%, 60%);
+        border-radius: 100%;
+        color: hsl(253, 100%, 60%);
+    }
 }
