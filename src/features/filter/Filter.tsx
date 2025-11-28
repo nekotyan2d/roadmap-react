@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Filter.css";
 import Popup from "../popup/Popup.js";
 import { useAppStore } from "../../stores/app.js";
 
 function Filter() {
+    const roadmap = useAppStore((state) => state.roadmap);
     const filterByState = useAppStore((state) => state.filterByState);
     const [isPopupVisible, setPopupVisible] = useState(false);
+
+    if (roadmap.length === 0) return null;
 
     const items = [
         { text: "Все", onClick: () => filterByState("all") },

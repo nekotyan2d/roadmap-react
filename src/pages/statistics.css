@@ -1,0 +1,39 @@
+.statistics-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+
+    .statistics-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        border: 1px solid;
+        font-size: 14px;
+        flex: 1;
+        font-size: 18px;
+        font-weight: 600;
+
+        &[data-variant="not-started"] {
+            background-color: var(--color-tech-not-started-light);
+            color: var(--color-tech-not-started-dark);
+            border-color: var(--color-tech-not-started-dark);
+            border-radius: 16px;
+        }
+        &[data-variant="in-progress"] {
+            background-color: var(--color-tech-in-progress-light);
+            color: var(--color-tech-in-progress-dark);
+            border-color: var(--color-tech-in-progress-dark);
+            border-radius: 16px;
+        }
+        &[data-variant="completed"] {
+            background-color: var(--color-tech-completed-light);
+            color: var(--color-tech-completed-dark);
+            border-color: var(--color-tech-completed-dark);
+            border-radius: 16px;
+        }
+    }
+}

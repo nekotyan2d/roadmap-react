@@ -34,6 +34,7 @@ button {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    width: fit-content;
 
     &:disabled {
         opacity: 0.5;
@@ -54,4 +55,10 @@ input {
     font-size: 16px;
     font-family: inherit;
     resize: vertical;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }

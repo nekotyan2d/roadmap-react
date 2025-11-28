@@ -19,6 +19,8 @@ interface AppState {
 
     markAllAsCompleted: () => void;
     markAllAsNotStarted: () => void;
+
+    resetStore: () => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -103,6 +105,8 @@ export const useAppStore = create<AppState>()(
                     return { roadmap: updatedRoadmap };
                 });
             },
+
+            resetStore: () => set({ roadmap: [], filteredRoadmap: [], isFiltered: false, roadmapItemId: null }),
         }),
         {
             name: "app-store",

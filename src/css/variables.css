@@ -10,7 +10,7 @@ html.theme-light {
 
     --color-violet-light: hsl(253, 100%, 95%);
     --color-violet-dark: hsl(253, 100%, 60%);
-    --color-green-light: hsl(112, 100%, 95%);
+    --color-green-light: hsl(112, 100%, 97%);
     --color-green-dark: hsl(112, 100%, 25%);
     --color-grey-light: hsl(0, 0%, 95%);
     --color-grey-dark: hsl(0, 0%, 25%);
@@ -22,7 +22,7 @@ html.theme-light {
 
     --color-tech-not-started-dark: hsl(253, 100%, 85%);
     --color-tech-not-started-light: hsl(253, 100%, 60%);
-    --color-tech-in-progress-dark: hsl(42, 87%, 53%);
+    --color-tech-in-progress-dark: hsl(44, 100%, 73%);
     --color-tech-in-progress-light: hsl(42, 87%, 25%);
     --color-tech-completed-dark: hsl(112, 100%, 82%);
     --color-tech-completed-light: hsl(112, 100%, 20%);

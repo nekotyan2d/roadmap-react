@@ -5,6 +5,7 @@ header {
     padding: 0 16px;
     display: flex;
     align-items: center;
+    gap: 8px;
 
     h1 {
         flex: 1;
@@ -15,7 +16,8 @@ header {
     }
 
     .back,
-    .settings {
+    .settings,
+    .statistics {
         display: flex;
         align-items: center;
         color: var(--color-primary);

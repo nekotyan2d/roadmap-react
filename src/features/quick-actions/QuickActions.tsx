@@ -4,10 +4,12 @@ import { useAppStore } from "../../stores/app.js";
 import Popup from "../popup/Popup.js";
 
 function QuickActions() {
+    const roadmap = useAppStore((state) => state.roadmap);
     const markAllAsCompleted = useAppStore((state) => state.markAllAsCompleted);
     const markAllAsNotStarted = useAppStore((state) => state.markAllAsNotStarted);
-
     const [isPopupVisible, setPopupVisible] = useState(false);
+
+    if (roadmap.length === 0) return null;
 
     const items = [
         { text: "Отметить все как выполненные", onClick: markAllAsCompleted },

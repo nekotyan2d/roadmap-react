@@ -5,6 +5,7 @@ import SettingsPage from "./pages/settings.js";
 import IndexPage from "./pages/index.js";
 import Header from "./features/header/Header.js";
 import { useThemeEffect } from "./hooks/useThemeEffect.js";
+import StatisticsPage from "./pages/statistics.js";
 
 function App() {
     useThemeEffect();
@@ -21,6 +22,10 @@ function App() {
                     <Route
                         path="/settings"
                         element={<SettingsPage />}
+                    />
+                    <Route
+                        path="/statistics"
+                        element={<StatisticsPage />}
                     />
                 </Routes>
             </main>
