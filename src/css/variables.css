@@ -1,9 +1,11 @@
 html.theme-light {
     --color-bg: hsl(0, 0%, 98%);
-    --color-bg-light: hsl(0, 0%, 98%);
+    --color-bg-light: hsl(0, 0%, 100%);
     --color-text: hsl(0, 0%, 10%);
     --color-border: hsl(0, 0%, 80%);
     --color-primary: hsl(253, 100%, 60%);
+
+    --color-ripple: hsl(0, 0%, 85%);
 
     --color-btn-bg: hsl(253, 100%, 60%);
     --color-btn-text: hsl(0, 0%, 100%);
@@ -34,6 +36,8 @@ html.theme-dark {
     --color-text: hsl(0, 0%, 90%);
     --color-border: hsl(0, 0%, 30%);
     --color-primary: hsl(253, 100%, 70%);
+
+    --color-ripple: hsl(0, 0%, 20%);
 
     --color-btn-bg: hsl(253, 100%, 80%);
     --color-btn-text: hsl(253, 100%, 35%);
