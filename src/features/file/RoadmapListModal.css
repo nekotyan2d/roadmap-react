@@ -1,0 +1,10 @@
+.roadmap-list {
+    .roadmap-item {
+        padding: 16px 8px;
+
+        &:hover {
+            background-color: var(--color-ripple);
+            cursor: pointer;
+        }
+    }
+}

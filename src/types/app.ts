@@ -14,4 +14,9 @@ declare global {
         state: RoadmapState;
         note: string;
     }
+
+    interface RoadmapShortItem {
+        id: string;
+        title: string;
+    }
 }

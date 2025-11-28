@@ -37,6 +37,7 @@ function QuickActions() {
                 <Popup
                     items={items}
                     initiatorClassName="quick-actions-button"
+                    direction="right"
                     onClose={() => setPopupVisible(false)}
                 />
             )}

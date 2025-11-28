@@ -38,6 +38,7 @@ function Filter() {
                 <Popup
                     items={items}
                     initiatorClassName="filter-button"
+                    direction="right"
                     onClose={() => setPopupVisible(false)}
                 />
             )}

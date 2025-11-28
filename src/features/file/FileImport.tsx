@@ -1,10 +1,23 @@
-import type React from "react";
+import "./FileImport.css";
+
 import { useAppStore } from "../../stores/app.js";
+import { useState } from "react";
+import Popup from "../popup/Popup.js";
+import RoadmapListModal from "./RoadmapListModal.js";
+import { parseRoadmap } from "../../utils/parseRoadmap.js";
 
 function FileImport() {
     const setRoadmap = useAppStore((state) => state.setRoadmap);
 
-    function onClick(e: React.MouseEvent<HTMLButtonElement>) {
+    const [isPopupVisible, setPopupVisible] = useState(false);
+    const [isRoadmapListModalVisible, setRoadmapListModalVisible] = useState(false);
+
+    const items = [
+        { text: "Из файла", onClick: () => selectFile() },
+        { text: "Выбрать", onClick: () => setRoadmapListModalVisible(true) },
+    ];
+
+    function selectFile() {
         const input = document.createElement("input");
         input.type = "file";
         input.accept = ".json,application/json";
@@ -24,19 +37,32 @@ function FileImport() {
             const content = evt.target.result;
             if (typeof content !== "string") return;
 
-            const roadmapArray = Object.values(JSON.parse(content) as RoadmapItem[]).map((item, index) => ({
-                ...item,
-                state: item.state !== undefined ? item.state : "not-started",
-                id: item.id !== undefined ? item.id : index,
-            }));
+            const roadmapArray = parseRoadmap(content);
             setRoadmap(roadmapArray);
         };
         if (file) reader.readAsText(file);
     }
     return (
-        <>
-            <button onClick={onClick}>Импорт</button>
-        </>
+        <div className="import-container">
+            <button
+                className="import-button"
+                onClick={() => setPopupVisible(!isPopupVisible)}>
+                Импорт
+            </button>
+            {isPopupVisible && (
+                <Popup
+                    items={items}
+                    initiatorClassName="import-button"
+                    onClose={() => setPopupVisible(false)}
+                />
+            )}
+            {isRoadmapListModalVisible && (
+                <RoadmapListModal
+                    show={isRoadmapListModalVisible}
+                    onClose={() => setRoadmapListModalVisible(false)}
+                />
+            )}
+        </div>
     );
 }
 

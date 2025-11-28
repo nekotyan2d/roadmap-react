@@ -9,10 +9,11 @@ interface PopupItem {
 interface PopupProps {
     items: PopupItem[];
     initiatorClassName: string;
+    direction?: "left" | "right";
     onClose: () => void;
 }
 
-function Popup({ items, onClose, initiatorClassName }: PopupProps) {
+function Popup({ items, onClose, initiatorClassName, direction }: PopupProps) {
     const onWindowClick = (e: MouseEvent) => {
         const target = e.target as HTMLElement;
         if (!target.closest(".popup") && !target.closest(`.${initiatorClassName}`)) {
@@ -26,7 +27,7 @@ function Popup({ items, onClose, initiatorClassName }: PopupProps) {
     }, []);
 
     return (
-        <div className="popup">
+        <div className={`popup ${direction || "left"}`}>
             <div className="popup-menu">
                 {items.map((item, index) => (
                     <div
