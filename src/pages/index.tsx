@@ -45,6 +45,7 @@ function IndexPage() {
                             title={item.title}
                             state={item.state}
                             id={item.id}
+                            deadline={item.deadline}
                             key={`tech-tree-branch-${item.id}`}
                             onClick={() => setSearchParams({ task: item.id.toString() })}
                         />
@@ -60,6 +61,7 @@ function IndexPage() {
                                 links={item.links}
                                 note={item.note}
                                 id={item.id}
+                                deadline={item.deadline}
                                 key={`tech-card-${item.id}`}
                             />
                         </Modal>

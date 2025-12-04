@@ -8,7 +8,7 @@ interface TechnologyDataFormProps {
 
 export interface Form {
     note: string;
-    deadline?: Date | null;
+    deadline: Date | null;
 }
 
 function TechnologyDataForm({ initData, onSave }: TechnologyDataFormProps) {
@@ -19,21 +19,18 @@ function TechnologyDataForm({ initData, onSave }: TechnologyDataFormProps) {
 
     const deadlineString = formData.deadline ? formData.deadline.toISOString().split("T")[0] : "";
 
-    const hasChanges =
-        formData.note != (initData.note || "") || formData.deadline?.getTime() != initData.deadline?.getTime();
-
-    const [isSaveDisabled, setSaveDisabled] = useState(!hasChanges);
+    const [isSaveDisabled, setSaveDisabled] = useState(true);
 
     function onSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        onSave(formData);
     }
 
     function validate() {
-        console.log(formData);
-        const changed =
-            formData.note !== (initData.note || "") || formData.deadline?.getTime() !== initData.deadline?.getTime();
-
-        setSaveDisabled(!changed);
+        const hasChanges =
+            formData.note !== initData.note ||
+            (formData.deadline?.getTime() || null) !== (initData.deadline?.getTime() || null);
+        setSaveDisabled(!hasChanges);
     }
 
     useEffect(validate, [formData, initData]);
@@ -53,7 +50,6 @@ function TechnologyDataForm({ initData, onSave }: TechnologyDataFormProps) {
         <form
             className="technology-data-form"
             onSubmit={onSubmit}>
-            {formData.deadline?.toString()}
             <h3>Заметки</h3>
             <textarea
                 className="notes__textarea"
@@ -66,11 +62,11 @@ function TechnologyDataForm({ initData, onSave }: TechnologyDataFormProps) {
                 className="deadline__input"
                 type="date"
                 value={deadlineString}
-                onChange={onDeadlineChange}></input>
+                onChange={onDeadlineChange}
+                min={new Date().toISOString().split("T")[0]}></input>
             <button
                 className="form-save"
-                disabled={isSaveDisabled}
-                onClick={() => onSave(formData)}>
+                disabled={isSaveDisabled}>
                 Сохранить
             </button>
         </form>

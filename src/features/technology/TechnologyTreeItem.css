@@ -1,11 +1,28 @@
 .tech-tree-item {
-    border-radius: 24px;
-    padding: 0 16px;
     width: fit-content;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    &:not(:last-of-type)::after {
-        content: "";
+    .bubble-title {
+        border-radius: 24px;
+        padding: 0 16px;
+        display: flex;
+        background-color: var(--color-bubble-bg, var(--color-tech-not-started-dark));
+        color: var(--color-bubble-text, var(--color-tech-not-started-light));
+    }
+
+    .bubble-deadline {
+        background-color: var(--color-grey-light);
+        color: var(--color-grey-dark);
+        border-radius: 0 0 12px 12px;
+        font-size: 14px;
+        padding: 4px 8px;
+        width: fit-content;
+    }
+
+    .path {
         position: absolute;
         bottom: -16px;
         left: 50%;
@@ -19,18 +36,18 @@
 }
 
 .tech-tree-item--not-started {
-    background-color: var(--color-tech-not-started-dark);
-    color: var(--color-tech-not-started-light);
+    --color-bubble-bg: var(--color-tech-not-started-dark);
+    --color-bubble-text: var(--color-tech-not-started-light);
 }
 
 .tech-tree-item--in-progress {
-    background-color: var(--color-tech-in-progress-dark);
-    color: var(--color-tech-in-progress-light);
+    --color-bubble-bg: var(--color-tech-in-progress-dark);
+    --color-bubble-text: var(--color-tech-in-progress-light);
     --color-branch: var(--color-tech-in-progress-light);
 }
 
 .tech-tree-item--completed {
-    background-color: var(--color-tech-completed-dark);
-    color: var(--color-tech-completed-light);
+    --color-bubble-bg: var(--color-tech-completed-dark);
+    --color-bubble-text: var(--color-tech-completed-light);
     --color-branch: var(--color-tech-completed-light);
 }

@@ -13,7 +13,7 @@ declare global {
         links: RoadmapLink[];
         state: RoadmapState;
         note: string;
-        deadline?: Date;
+        deadline: Date | null;
     }
 
     interface RoadmapShortItem {

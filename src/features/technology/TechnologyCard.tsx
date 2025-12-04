@@ -8,6 +8,8 @@ type TechnologyCardProps = RoadmapItem;
 function TechnologyCard({ title, description, links, id, state, note, deadline }: TechnologyCardProps) {
     const setRoadmapStateByIndex = useAppStore((state) => state.setRoadmapStateByIndex);
     const setRoadmapItemId = useAppStore((state) => state.setRoadmapItemId);
+    const setRoadmapNoteByIndex = useAppStore((state) => state.setRoadmapNoteByIndex);
+    const setRoadmapDeadlineByIndex = useAppStore((state) => state.setRoadmapDeadlineByIndex);
 
     function onChangeState(e: React.ChangeEvent<HTMLSelectElement>) {
         setRoadmapStateByIndex(id, e.target.value as RoadmapState);
@@ -18,7 +20,8 @@ function TechnologyCard({ title, description, links, id, state, note, deadline }
     }
 
     function onSave(formData: Form) {
-        console.log(formData);
+        setRoadmapNoteByIndex(id, formData.note);
+        setRoadmapDeadlineByIndex(id, formData.deadline);
     }
 
     return (
@@ -48,7 +51,7 @@ function TechnologyCard({ title, description, links, id, state, note, deadline }
             </ul>
             <section className="card__data">
                 <TechnologyDataForm
-                    initData={{ note, ...(deadline && { deadline: deadline }) }}
+                    initData={{ note, deadline }}
                     onSave={onSave}
                 />
             </section>
