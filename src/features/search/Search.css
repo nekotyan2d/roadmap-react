@@ -1,6 +1,7 @@
 .search {
     display: flex;
     flex: 1;
+    position: relative;
 
     .search-input {
         width: 100%;
@@ -22,5 +23,12 @@
             background-repeat: no-repeat;
             background-position: center;
         }
+    }
+
+    .search-count {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
     }
 }
