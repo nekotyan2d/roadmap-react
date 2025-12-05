@@ -5,6 +5,10 @@
     flex-direction: column;
     align-items: center;
 
+    &.highlight {
+        animation: highlight 1.5s ease-in-out;
+    }
+
     .bubble-title {
         border-radius: 24px;
         padding: 0 16px;
@@ -50,4 +54,16 @@
     --color-bubble-bg: var(--color-tech-completed-dark);
     --color-bubble-text: var(--color-tech-completed-light);
     --color-branch: var(--color-tech-completed-light);
+}
+
+@keyframes highlight {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

@@ -9,11 +9,43 @@ function QuickActions() {
     const markAllAsNotStarted = useAppStore((state) => state.markAllAsNotStarted);
     const [isPopupVisible, setPopupVisible] = useState(false);
 
+    function selectRandom() {
+        const notStartedItems = roadmap.filter((item) => item.state === "not-started");
+        if (notStartedItems.length === 0) {
+            return;
+        }
+        const randomItem = notStartedItems[Math.floor(Math.random() * notStartedItems.length)]!;
+        const element = document.getElementById(`tech-item-${randomItem.id}`);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "center" });
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry && entry.isIntersecting) {
+                        element.classList.add("highlight");
+                        observer.disconnect();
+
+                        element.addEventListener(
+                            "animationend",
+                            () => {
+                                element.classList.remove("highlight");
+                            },
+                            { once: true }
+                        );
+                    }
+                },
+                { threshold: 1.0 }
+            );
+
+            observer.observe(element);
+        }
+    }
+
     if (roadmap.length === 0) return null;
 
     const items = [
         { text: "Отметить все как выполненные", onClick: markAllAsCompleted },
         { text: "Сбросить выполнение", onClick: markAllAsNotStarted },
+        { text: "Выбрать случайный", onClick: selectRandom },
     ];
 
     return (

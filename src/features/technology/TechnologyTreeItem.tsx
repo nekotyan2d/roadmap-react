@@ -21,6 +21,7 @@ function TechnologyTreeItem({ title, state, deadline, id, onClick }: TechnologyT
         <>
             <div
                 className={`tech-tree-item tech-tree-item--${state}`}
+                id={`tech-item-${id}`}
                 onClick={onClick}>
                 <div className="bubble-title">
                     <h3>{title}</h3>
