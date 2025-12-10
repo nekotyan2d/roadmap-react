@@ -21,6 +21,10 @@ interface AppState {
     markAllAsCompleted: () => void;
     markAllAsNotStarted: () => void;
 
+    selectedItems: number[];
+    setSelectedItems: (ids: number[]) => void;
+    clearSelectedItems: () => void;
+
     resetStore: () => void;
 }
 
@@ -111,6 +115,10 @@ export const useAppStore = create<AppState>()(
                     return { roadmap: updatedRoadmap };
                 });
             },
+
+            selectedItems: [],
+            setSelectedItems: (ids) => set({ selectedItems: ids }),
+            clearSelectedItems: () => set({ selectedItems: [] }),
 
             resetStore: () => set({ roadmap: [], filteredRoadmap: [], isFiltered: false, roadmapItemId: null }),
         }),
