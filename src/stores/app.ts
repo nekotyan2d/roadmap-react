@@ -24,6 +24,8 @@ interface AppState {
     selectedItems: number[];
     setSelectedItems: (ids: number[]) => void;
     clearSelectedItems: () => void;
+    selectionMode: "add" | "remove";
+    setSelectionMode: (mode: "add" | "remove") => void;
 
     resetStore: () => void;
 }
@@ -119,6 +121,9 @@ export const useAppStore = create<AppState>()(
             selectedItems: [],
             setSelectedItems: (ids) => set({ selectedItems: ids }),
             clearSelectedItems: () => set({ selectedItems: [] }),
+
+            selectionMode: "add",
+            setSelectionMode: (mode) => set({ selectionMode: mode }),
 
             resetStore: () => set({ roadmap: [], filteredRoadmap: [], isFiltered: false, roadmapItemId: null }),
         }),

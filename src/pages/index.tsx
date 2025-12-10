@@ -1,3 +1,4 @@
+import "./index.css";
 import { useSearchParams } from "react-router-dom";
 import FileExport from "../features/file/FileExport.js";
 import FileImport from "../features/file/FileImport.js";
@@ -17,6 +18,7 @@ function IndexPage() {
     const roadmapIsFiltered = useAppStore((state) => state.isFiltered);
     const getCurrentRoadmapItem = useAppStore((state) => state.getCurrentRoadmapItem);
     const setCurrentRoadmapItemId = useAppStore((state) => state.setRoadmapItemId);
+    const selectedItems = useAppStore((state) => state.selectedItems);
 
     function View() {
         const roadmap = roadmapIsFiltered ? filteredRoadmap : originalRoadmap;
@@ -38,7 +40,9 @@ function IndexPage() {
         }
 
         return (
-            <div className="tech-tree">
+            <div
+                className="tech-tree"
+                data-selecting={selectedItems.length > 0}>
                 {roadmap.map((item) => (
                     <Fragment key={`tech-tree-item-${item.id}`}>
                         <TechnologyTreeItem

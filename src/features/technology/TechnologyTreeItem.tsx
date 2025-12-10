@@ -21,48 +21,72 @@ function TechnologyTreeItem({ title, state, deadline, id, onClick }: TechnologyT
     const selectedItems = useAppStore((state) => state.selectedItems);
     const setSelectedItems = useAppStore((state) => state.setSelectedItems);
 
+    const selectionMode = useAppStore((state) => state.selectionMode);
+    const setSelectionMode = useAppStore((state) => state.setSelectionMode);
+
     const isSelected = selectedItems.includes(id);
 
-    function handleClick(e: MouseEvent) {
-        const target = e.target as HTMLElement;
-        if (target.closest(".bubble-title") && !target.closest(".selection-checkbox")) {
-            onClick();
-        }
-    }
-
     function handleMouseDown(e: MouseEvent) {
+        if ((e.target as HTMLElement).closest(".bubble-title")) {
+            return;
+        }
+
         if (e.button === 0) {
             // ЛКМ: Начало выделения
-            setSelectedItems([id]);
+            e.preventDefault();
+            setSelectionMode(isSelected ? "remove" : "add");
+            if (isSelected) {
+                setSelectedItems(selectedItems.filter((itemId) => itemId !== id));
+            } else {
+                setSelectedItems([...selectedItems, id]);
+            }
         }
     }
 
     function handleMouseEnter(e: MouseEvent) {
         if (e.buttons === 1) {
-            setSelectedItems([...new Set([...selectedItems, id])]);
+            if (selectionMode === "add" && !isSelected) {
+                setSelectedItems([...selectedItems, id]);
+            } else if (selectionMode === "remove" && isSelected) {
+                setSelectedItems(selectedItems.filter((itemId) => itemId !== id));
+            }
         }
+    }
+
+    function handleClick(e: MouseEvent) {
+        e.stopPropagation();
+        e.preventDefault();
+        onClick();
     }
 
     return (
         <>
             <div
-                className={`tech-tree-item tech-tree-item--${state}`}
-                id={`tech-item-${id}`}
-                onClick={(e) => handleClick(e)}>
-                <div className="bubble-title">
-                    <h3>{title}</h3>
-                    <input
-                        type="checkbox"
-                        className="selection-checkbox"
-                    />
-                </div>
-                {!(roadmap.at(-1)?.id == id) && <div className="path"></div>}
-
-                {deadline && state != "completed" && (
-                    <div className="bubble-deadline">
-                        {deadline.toLocaleDateString("ru-RU", { day: "numeric", month: "short" })}
+                className="tech-tree-item-container"
+                onMouseDown={(e) => handleMouseDown(e)}
+                onMouseEnter={(e) => handleMouseEnter(e)}>
+                <div
+                    className={`tech-tree-item tech-tree-item--${state}`}
+                    id={`tech-item-${id}`}>
+                    <div
+                        className="bubble-title"
+                        onClick={handleClick}>
+                        <h3>{title}</h3>
+                        <input
+                            type="checkbox"
+                            className="selection-checkbox"
+                            checked={isSelected}
+                            readOnly
+                        />
                     </div>
-                )}
+                    {!(roadmap.at(-1)?.id == id) && <div className="path"></div>}
+
+                    {deadline && state != "completed" && (
+                        <div className="bubble-deadline">
+                            {deadline.toLocaleDateString("ru-RU", { day: "numeric", month: "short" })}
+                        </div>
+                    )}
+                </div>
             </div>
         </>
     );

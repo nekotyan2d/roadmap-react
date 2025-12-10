@@ -1,12 +1,18 @@
+import { useAppStore } from "../../stores/app.js";
+import MultipleEditing from "../quick-actions/MultipleEditing.js";
 import "./Header.css";
 import { Link, useLocation } from "react-router-dom";
 
 function Header() {
     const location = useLocation();
+
+    const selectedItems = useAppStore((state) => state.selectedItems);
+    const setSelectedItems = useAppStore((state) => state.setSelectedItems);
+
     function getHeader() {
         switch (location.pathname) {
             case "/":
-                return (
+                return selectedItems.length === 0 ? (
                     <>
                         <h1>Roadmap</h1>
                         <Link
@@ -38,6 +44,16 @@ function Header() {
                             </svg>
                         </Link>
                     </>
+                ) : (
+                    <div className="selected-actions">
+                        <div className="selected-actions__count">Выделено {selectedItems.length}</div>
+                        <MultipleEditing />
+                        <button
+                            className="selected-actions__clear"
+                            onClick={() => setSelectedItems([])}>
+                            Отмена
+                        </button>
+                    </div>
                 );
             case "/settings":
                 return (
@@ -88,7 +104,7 @@ function Header() {
         }
     }
 
-    return <header>{getHeader()}</header>;
+    return <header className="app-header">{getHeader()}</header>;
 }
 
 export default Header;
