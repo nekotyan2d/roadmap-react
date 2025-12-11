@@ -6,6 +6,7 @@ import IndexPage from "./pages/index.js";
 import Header from "./features/header/Header.js";
 import { useThemeEffect } from "./hooks/useThemeEffect.js";
 import StatisticsPage from "./pages/statistics.js";
+import Snackbar from "./features/snackbar/Snackbar.js";
 
 function App() {
     useThemeEffect();
@@ -29,6 +30,7 @@ function App() {
                     />
                 </Routes>
             </main>
+            <Snackbar />
         </Router>
     );
 }

@@ -21,7 +21,7 @@ function Filter() {
         <div className="filter-container">
             <button
                 title="Фильтр"
-                className="filter-button"
+                className="button filter-button"
                 onClick={() => setPopupVisible(!isPopupVisible)}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

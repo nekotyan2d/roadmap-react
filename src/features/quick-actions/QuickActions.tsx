@@ -2,12 +2,14 @@ import { useState } from "react";
 import "./QuickActions.css";
 import { useAppStore } from "../../stores/app.js";
 import Popup from "../popup/Popup.js";
+import { useSnackbarStore } from "../../stores/snackbar.js";
 
 function QuickActions() {
     const roadmap = useAppStore((state) => state.roadmap);
     const markAllAsCompleted = useAppStore((state) => state.markAllAsCompleted);
     const markAllAsNotStarted = useAppStore((state) => state.markAllAsNotStarted);
     const [isPopupVisible, setPopupVisible] = useState(false);
+    const showSnackbar = useSnackbarStore((state) => state.showSnackbar);
 
     function selectRandom() {
         const notStartedItems = roadmap.filter((item) => item.state === "not-started");
@@ -43,8 +45,20 @@ function QuickActions() {
     if (roadmap.length === 0) return null;
 
     const items = [
-        { text: "Отметить все как выполненные", onClick: markAllAsCompleted },
-        { text: "Сбросить выполнение", onClick: markAllAsNotStarted },
+        {
+            text: "Отметить все как выполненные",
+            onClick: () => {
+                markAllAsCompleted();
+                showSnackbar("Данные обновлены", "success");
+            },
+        },
+        {
+            text: "Сбросить выполнение",
+            onClick: () => {
+                markAllAsNotStarted();
+                showSnackbar("Данные обновлены", "success");
+            },
+        },
         { text: "Выбрать случайный", onClick: selectRandom },
     ];
 
@@ -52,7 +66,7 @@ function QuickActions() {
         <div className="quick-actions-container">
             <button
                 title="Быстрые действия"
-                className="quick-actions-button"
+                className="button quick-actions-button"
                 onClick={() => setPopupVisible(!isPopupVisible)}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

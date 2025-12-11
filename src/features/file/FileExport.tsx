@@ -18,7 +18,13 @@ function FileExport() {
 
     if (roadmap.length == 0) return null;
 
-    return <button onClick={onClick}>Экспорт</button>;
+    return (
+        <button
+            className="button"
+            onClick={onClick}>
+            Экспорт
+        </button>
+    );
 }
 
 export default FileExport;

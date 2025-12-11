@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./MultipleEditing.css";
 import Popup from "../popup/Popup.js";
 import { useAppStore } from "../../stores/app.js";
+import { useSnackbarStore } from "../../stores/snackbar.js";
 
 function MultipleEditing() {
     const [isPopupVisible, setPopupVisible] = useState(false);
@@ -10,6 +11,7 @@ function MultipleEditing() {
     const roadmap = useAppStore((state) => state.roadmap);
     const setRoadmap = useAppStore((state) => state.setRoadmap);
     const clearSelectedItems = useAppStore((state) => state.clearSelectedItems);
+    const showSnackbar = useSnackbarStore((state) => state.showSnackbar);
 
     const handleStateChange = (newState: RoadmapState) => {
         const updatedRoadmap = roadmap.map((item) =>
@@ -18,6 +20,7 @@ function MultipleEditing() {
         setRoadmap(updatedRoadmap);
         clearSelectedItems();
         setPopupVisible(false);
+        showSnackbar("Данные обновлены", "success");
     };
 
     const items = [
@@ -29,7 +32,7 @@ function MultipleEditing() {
     return (
         <div className="multiple-editing-container">
             <button
-                className="multiple-editing-button"
+                className="button multiple-editing-button"
                 onClick={() => setPopupVisible(!isPopupVisible)}>
                 Изменить
             </button>

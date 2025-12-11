@@ -65,7 +65,7 @@ function TechnologyDataForm({ initData, onSave }: TechnologyDataFormProps) {
                 onChange={onDeadlineChange}
                 min={new Date().toISOString().split("T")[0]}></input>
             <button
-                className="form-save"
+                className="button form-save"
                 disabled={isSaveDisabled}>
                 Сохранить
             </button>

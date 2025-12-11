@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAppStore } from "../../stores/app.js";
 import "./TechnologyCard.css";
 import TechnologyDataForm, { type Form } from "../forms/TechnologyDataForm.js";
+import { useSnackbarStore } from "../../stores/snackbar.js";
 
 type TechnologyCardProps = RoadmapItem;
 
@@ -10,6 +11,7 @@ function TechnologyCard({ title, description, links, id, state, note, deadline }
     const setRoadmapItemId = useAppStore((state) => state.setRoadmapItemId);
     const setRoadmapNoteByIndex = useAppStore((state) => state.setRoadmapNoteByIndex);
     const setRoadmapDeadlineByIndex = useAppStore((state) => state.setRoadmapDeadlineByIndex);
+    const showSnackbar = useSnackbarStore((state) => state.showSnackbar);
 
     function onChangeState(e: React.ChangeEvent<HTMLSelectElement>) {
         setRoadmapStateByIndex(id, e.target.value as RoadmapState);
@@ -22,6 +24,7 @@ function TechnologyCard({ title, description, links, id, state, note, deadline }
     function onSave(formData: Form) {
         setRoadmapNoteByIndex(id, formData.note);
         setRoadmapDeadlineByIndex(id, formData.deadline);
+        showSnackbar("Данные сохранены", "success");
     }
 
     return (
