@@ -6,6 +6,9 @@ import IndexPage from "./pages/index.js";
 import Header from "./features/header/Header.js";
 import { useThemeEffect } from "./hooks/useThemeEffect.js";
 import StatisticsPage from "./pages/statistics.js";
+import Snackbar from "./features/snackbar/Snackbar.js";
+import AuthPage from "./pages/auth.js";
+import UserPage from "./pages/user.js";
 
 function App() {
     useThemeEffect();
@@ -27,8 +30,17 @@ function App() {
                         path="/statistics"
                         element={<StatisticsPage />}
                     />
+                    <Route
+                        path="/auth"
+                        element={<AuthPage />}
+                    />
+                    <Route
+                        path="/user"
+                        element={<UserPage />}
+                    />
                 </Routes>
             </main>
+            <Snackbar />
         </Router>
     );
 }

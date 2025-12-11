@@ -24,7 +24,7 @@ main {
     margin: 0 auto;
 }
 
-button {
+.button {
     background-color: var(--color-btn-bg);
     color: var(--color-btn-text);
     border: none;

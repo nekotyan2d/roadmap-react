@@ -5,9 +5,11 @@ import { useState } from "react";
 import Popup from "../popup/Popup.js";
 import RoadmapListModal from "./RoadmapListModal.js";
 import { parseRoadmap } from "../../utils/parseRoadmap.js";
+import { useSnackbarStore } from "../../stores/snackbar.js";
 
 function FileImport() {
     const setRoadmap = useAppStore((state) => state.setRoadmap);
+    const showSnackbar = useSnackbarStore((state) => state.showSnackbar);
 
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [isRoadmapListModalVisible, setRoadmapListModalVisible] = useState(false);
@@ -36,16 +38,20 @@ function FileImport() {
 
             const content = evt.target.result;
             if (typeof content !== "string") return;
-
-            const roadmapArray = parseRoadmap(content);
-            setRoadmap(roadmapArray);
+            try {
+                const roadmapArray = parseRoadmap(content);
+                setRoadmap(roadmapArray);
+                showSnackbar("Файл успешно загружен", "success");
+            } catch (error) {
+                showSnackbar("Ошибка при загрузке файла", "error");
+            }
         };
         if (file) reader.readAsText(file);
     }
     return (
         <div className="import-container">
             <button
-                className="import-button"
+                className="button import-button"
                 onClick={() => setPopupVisible(!isPopupVisible)}>
                 Импорт
             </button>

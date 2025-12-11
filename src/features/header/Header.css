@@ -1,4 +1,4 @@
-header {
+.app-header {
     margin: 0 auto;
     max-width: 600px;
     width: 100%;
@@ -6,6 +6,11 @@ header {
     display: flex;
     align-items: center;
     gap: 8px;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    background-color: var(--color-bg);
+    z-index: 1;
 
     h1 {
         flex: 1;
@@ -17,9 +22,27 @@ header {
 
     .back,
     .settings,
-    .statistics {
+    .statistics,
+    .user {
         display: flex;
         align-items: center;
         color: var(--color-primary);
+    }
+
+    .selected-actions {
+        user-select: none;
+        display: flex;
+        align-items: center;
+        width: calc(100% + 32px);
+        background-color: var(--color-bg-light);
+        margin: 0 -16px;
+        padding: 0 16px;
+        height: 60px;
+        gap: 8px;
+
+        .selected-actions__count {
+            flex: 1;
+            font-weight: bold;
+        }
     }
 }

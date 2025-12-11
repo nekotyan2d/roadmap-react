@@ -6,6 +6,7 @@ interface AppState {
     setRoadmap: (data: RoadmapItem[]) => void;
     setRoadmapStateByIndex: (index: number, newState: RoadmapState) => void;
     setRoadmapNoteByIndex: (index: number, note: string) => void;
+    setRoadmapDeadlineByIndex: (index: number, deadline: Date | null) => void;
     roadmapItemId: number | null;
     getCurrentRoadmapItem: () => RoadmapItem | undefined;
     setRoadmapItemId: (id: number | null) => void;
@@ -19,6 +20,15 @@ interface AppState {
 
     markAllAsCompleted: () => void;
     markAllAsNotStarted: () => void;
+
+    selectedItems: number[];
+    setSelectedItems: (ids: number[]) => void;
+    clearSelectedItems: () => void;
+    selectionMode: "add" | "remove";
+    setSelectionMode: (mode: "add" | "remove") => void;
+
+    stateEditing: boolean;
+    setStateEditing: (value: boolean) => void;
 
     resetStore: () => void;
 }
@@ -38,6 +48,11 @@ export const useAppStore = create<AppState>()(
             setRoadmapNoteByIndex: (index, note) =>
                 set((state) => {
                     const updatedRoadmap = state.roadmap.map((item, i) => (i === index ? { ...item, note } : item));
+                    return { roadmap: updatedRoadmap };
+                }),
+            setRoadmapDeadlineByIndex: (index, deadline) =>
+                set((state) => {
+                    const updatedRoadmap = state.roadmap.map((item, i) => (i === index ? { ...item, deadline } : item));
                     return { roadmap: updatedRoadmap };
                 }),
             roadmapItemId: null,
@@ -105,6 +120,16 @@ export const useAppStore = create<AppState>()(
                     return { roadmap: updatedRoadmap };
                 });
             },
+
+            selectedItems: [],
+            setSelectedItems: (ids) => set({ selectedItems: ids }),
+            clearSelectedItems: () => set({ selectedItems: [] }),
+
+            selectionMode: "add",
+            setSelectionMode: (mode) => set({ selectionMode: mode }),
+
+            stateEditing: false,
+            setStateEditing: (value) => set({ stateEditing: value }),
 
             resetStore: () => set({ roadmap: [], filteredRoadmap: [], isFiltered: false, roadmapItemId: null }),
         }),

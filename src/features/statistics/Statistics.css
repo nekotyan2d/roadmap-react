@@ -92,3 +92,17 @@
         padding: 0.25rem 0.5rem;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .stats {
+        flex-direction: column;
+
+        .stats-item {
+            width: 100%;
+        }
+    }
+
+    .completion-progress {
+        width: 100%;
+    }
+}

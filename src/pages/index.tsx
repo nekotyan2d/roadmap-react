@@ -1,3 +1,4 @@
+import "./index.css";
 import { useSearchParams } from "react-router-dom";
 import FileExport from "../features/file/FileExport.js";
 import FileImport from "../features/file/FileImport.js";
@@ -10,6 +11,7 @@ import { Fragment, useEffect } from "react";
 import Modal from "../features/modal/Modal.js";
 import TechnologyCard from "../features/technology/TechnologyCard.js";
 import TechnologyTreeItem from "../features/technology/TechnologyTreeItem.js";
+import StateEditMode from "../features/quick-actions/StateEditMode.js";
 
 function IndexPage() {
     const originalRoadmap = useAppStore((state) => state.roadmap);
@@ -17,6 +19,7 @@ function IndexPage() {
     const roadmapIsFiltered = useAppStore((state) => state.isFiltered);
     const getCurrentRoadmapItem = useAppStore((state) => state.getCurrentRoadmapItem);
     const setCurrentRoadmapItemId = useAppStore((state) => state.setRoadmapItemId);
+    const selectedItems = useAppStore((state) => state.selectedItems);
 
     function View() {
         const roadmap = roadmapIsFiltered ? filteredRoadmap : originalRoadmap;
@@ -38,13 +41,16 @@ function IndexPage() {
         }
 
         return (
-            <div className="tech-tree">
+            <div
+                className="tech-tree"
+                data-selecting={selectedItems.length > 0}>
                 {roadmap.map((item) => (
                     <Fragment key={`tech-tree-item-${item.id}`}>
                         <TechnologyTreeItem
                             title={item.title}
                             state={item.state}
                             id={item.id}
+                            deadline={item.deadline}
                             key={`tech-tree-branch-${item.id}`}
                             onClick={() => setSearchParams({ task: item.id.toString() })}
                         />
@@ -60,6 +66,7 @@ function IndexPage() {
                                 links={item.links}
                                 note={item.note}
                                 id={item.id}
+                                deadline={item.deadline}
                                 key={`tech-card-${item.id}`}
                             />
                         </Modal>
@@ -72,7 +79,10 @@ function IndexPage() {
         <>
             <div className="toolbar">
                 <FileImport />
-                <FileExport />
+                <div className="toolbar-actions">
+                    <StateEditMode />
+                    <FileExport />
+                </div>
             </div>
             <div className="filterbar">
                 <Search />

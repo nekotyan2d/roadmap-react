@@ -47,7 +47,7 @@ function Modal({ show, title, children, onClose }: ModalProps) {
                 <header className="modal-content__header">
                     <h2 className="modal-content__title">{title}</h2>
                     <button
-                        className="modal__close"
+                        className="button modal__close"
                         onClick={onClose}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

@@ -1,20 +1,17 @@
 import { useState } from "react";
 import { useAppStore } from "../../stores/app.js";
 import "./TechnologyCard.css";
+import TechnologyDataForm, { type Form } from "../forms/TechnologyDataForm.js";
+import { useSnackbarStore } from "../../stores/snackbar.js";
 
-interface TechnologyCardProps {
-    title: string;
-    description: string;
-    links: { type: string; title: string; url: string }[];
-    id: number;
-    state: RoadmapState;
-    note: string;
-}
+type TechnologyCardProps = RoadmapItem;
 
-function TechnologyCard({ title, description, links, id, state, note }: TechnologyCardProps) {
+function TechnologyCard({ title, description, links, id, state, note, deadline }: TechnologyCardProps) {
     const setRoadmapStateByIndex = useAppStore((state) => state.setRoadmapStateByIndex);
     const setRoadmapItemId = useAppStore((state) => state.setRoadmapItemId);
     const setRoadmapNoteByIndex = useAppStore((state) => state.setRoadmapNoteByIndex);
+    const setRoadmapDeadlineByIndex = useAppStore((state) => state.setRoadmapDeadlineByIndex);
+    const showSnackbar = useSnackbarStore((state) => state.showSnackbar);
 
     function onChangeState(e: React.ChangeEvent<HTMLSelectElement>) {
         setRoadmapStateByIndex(id, e.target.value as RoadmapState);
@@ -24,10 +21,10 @@ function TechnologyCard({ title, description, links, id, state, note }: Technolo
         setRoadmapItemId(null);
     }
 
-    const [noteText, setNoteText] = useState(note);
-
-    function onNoteSave() {
-        setRoadmapNoteByIndex(id, noteText);
+    function onSave(formData: Form) {
+        setRoadmapNoteByIndex(id, formData.note);
+        setRoadmapDeadlineByIndex(id, formData.deadline);
+        showSnackbar("Данные сохранены", "success");
     }
 
     return (
@@ -55,22 +52,11 @@ function TechnologyCard({ title, description, links, id, state, note }: Technolo
                     </li>
                 ))}
             </ul>
-            <section className="card__notes">
-                <h3>Заметки</h3>
-                <header className="notes__header">
-                    <textarea
-                        className="notes__textarea"
-                        placeholder="Введите текст заметки"
-                        value={noteText}
-                        onChange={(e) => setNoteText(e.target.value)}
-                    />
-                    <button
-                        className="notes__save"
-                        disabled={noteText == note}
-                        onClick={onNoteSave}>
-                        Сохранить
-                    </button>
-                </header>
+            <section className="card__data">
+                <TechnologyDataForm
+                    initData={{ note, deadline }}
+                    onSave={onSave}
+                />
             </section>
         </article>
     );
