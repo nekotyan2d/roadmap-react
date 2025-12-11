@@ -1,3 +1,4 @@
+import { Cancel } from "@mui/icons-material";
 import { useAppStore } from "../../stores/app.js";
 import MultipleEditing from "../quick-actions/MultipleEditing.js";
 import "./Header.css";
@@ -55,7 +56,7 @@ function Header() {
                         <button
                             className="button selected-actions__clear"
                             onClick={() => setSelectedItems([])}>
-                            Отмена
+                            <Cancel />
                         </button>
                     </div>
                 );

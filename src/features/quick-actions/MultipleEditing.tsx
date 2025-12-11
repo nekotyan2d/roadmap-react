@@ -3,6 +3,7 @@ import "./MultipleEditing.css";
 import Popup from "../popup/Popup.js";
 import { useAppStore } from "../../stores/app.js";
 import { useSnackbarStore } from "../../stores/snackbar.js";
+import { Edit } from "@mui/icons-material";
 
 function MultipleEditing() {
     const [isPopupVisible, setPopupVisible] = useState(false);
@@ -34,7 +35,7 @@ function MultipleEditing() {
             <button
                 className="button multiple-editing-button"
                 onClick={() => setPopupVisible(!isPopupVisible)}>
-                Изменить
+                <Edit />
             </button>
             {isPopupVisible && (
                 <Popup

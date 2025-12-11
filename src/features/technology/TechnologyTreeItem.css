@@ -112,3 +112,14 @@
         transform: scale(1);
     }
 }
+
+@media screen and (max-width: 500px) {
+    .tech-tree-item {
+        .selection-checkbox {
+            transform: none;
+            bottom: 0;
+            top: auto;
+            right: 0;
+        }
+    }
+}
