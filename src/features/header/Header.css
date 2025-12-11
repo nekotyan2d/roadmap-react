@@ -22,7 +22,8 @@
 
     .back,
     .settings,
-    .statistics {
+    .statistics,
+    .user {
         display: flex;
         align-items: center;
         color: var(--color-primary);

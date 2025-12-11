@@ -6,6 +6,16 @@
     justify-content: space-between;
 }
 
+.toolbar-actions {
+    display: flex;
+    gap: 8px;
+
+    .button {
+        display: flex;
+        align-items: center;
+    }
+}
+
 .tech-tree {
     display: flex;
     flex-direction: column;

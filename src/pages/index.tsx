@@ -11,6 +11,7 @@ import { Fragment, useEffect } from "react";
 import Modal from "../features/modal/Modal.js";
 import TechnologyCard from "../features/technology/TechnologyCard.js";
 import TechnologyTreeItem from "../features/technology/TechnologyTreeItem.js";
+import StateEditMode from "../features/quick-actions/StateEditMode.js";
 
 function IndexPage() {
     const originalRoadmap = useAppStore((state) => state.roadmap);
@@ -78,7 +79,10 @@ function IndexPage() {
         <>
             <div className="toolbar">
                 <FileImport />
-                <FileExport />
+                <div className="toolbar-actions">
+                    <StateEditMode />
+                    <FileExport />
+                </div>
             </div>
             <div className="filterbar">
                 <Search />

@@ -27,6 +27,9 @@ interface AppState {
     selectionMode: "add" | "remove";
     setSelectionMode: (mode: "add" | "remove") => void;
 
+    stateEditing: boolean;
+    setStateEditing: (value: boolean) => void;
+
     resetStore: () => void;
 }
 
@@ -124,6 +127,9 @@ export const useAppStore = create<AppState>()(
 
             selectionMode: "add",
             setSelectionMode: (mode) => set({ selectionMode: mode }),
+
+            stateEditing: false,
+            setStateEditing: (value) => set({ stateEditing: value }),
 
             resetStore: () => set({ roadmap: [], filteredRoadmap: [], isFiltered: false, roadmapItemId: null }),
         }),

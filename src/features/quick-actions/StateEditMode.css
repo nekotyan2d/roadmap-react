@@ -1,0 +1,4 @@
+.state-edit-mode-button[data-active="true"] {
+    background-color: var(--color-violet-light);
+    color: var(--color-violet-dark);
+}

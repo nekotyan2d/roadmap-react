@@ -15,6 +15,8 @@ function TechnologyTreeItem({ title, state, deadline, id, onClick }: TechnologyT
     const originalRoadmap = useAppStore((state) => state.roadmap);
     const filteredRoadmap = useAppStore((state) => state.filteredRoadmap);
     const roadmapIsFiltered = useAppStore((state) => state.isFiltered);
+    const stateEditing = useAppStore((state) => state.stateEditing);
+    const setRoadmapStateByIndex = useAppStore((state) => state.setRoadmapStateByIndex);
 
     const roadmap = roadmapIsFiltered ? filteredRoadmap : originalRoadmap;
 
@@ -56,7 +58,13 @@ function TechnologyTreeItem({ title, state, deadline, id, onClick }: TechnologyT
     function handleClick(e: MouseEvent) {
         e.stopPropagation();
         e.preventDefault();
-        onClick();
+        if (stateEditing) {
+            const nextState =
+                state === "not-started" ? "in-progress" : state === "in-progress" ? "completed" : "not-started";
+            setRoadmapStateByIndex(id, nextState);
+        } else {
+            onClick();
+        }
     }
 
     return (
