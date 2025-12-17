@@ -18,7 +18,7 @@ function RoadmapListModal({ show, onClose }: RoadmapListModalProps) {
     const [roadmaps, setRoadmaps] = useState<RoadmapShortItem[]>([]);
 
     useEffect(() => {
-        fetch("https://roadmap.rule35-1.ru/roadmaps")
+        fetch("https://roadmap-api.nekotyan2d.ru/roadmaps")
             .then((data) => data.json())
             .then((data: { response: RoadmapShortItem[] }) => setRoadmaps(data.response))
             .catch(() => {
