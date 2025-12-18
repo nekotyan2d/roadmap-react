@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import "./QuickActions.css";
 import { useAppStore } from "../../stores/app.js";
 import Popup from "../popup/Popup.js";
@@ -6,6 +6,8 @@ import { useSnackbarStore } from "../../stores/snackbar.js";
 
 function QuickActions() {
     const roadmap = useAppStore((state) => state.roadmap);
+    const setRoadmapStateByIndex = useAppStore((state) => state.setRoadmapStateByIndex);
+
     const markAllAsCompleted = useAppStore((state) => state.markAllAsCompleted);
     const markAllAsNotStarted = useAppStore((state) => state.markAllAsNotStarted);
     const [isPopupVisible, setPopupVisible] = useState(false);
@@ -30,6 +32,7 @@ function QuickActions() {
                             "animationend",
                             () => {
                                 element.classList.remove("highlight");
+                                setRoadmapStateByIndex(roadmap.indexOf(randomItem), "in-progress");
                             },
                             { once: true }
                         );
